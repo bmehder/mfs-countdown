@@ -5,13 +5,12 @@
   // Change the date/time for the countdown
   export let end = 'February 1, 2025 5:00:00 GMT';
   export let title;
-  export let subtitle;
 
   let later = new Date(`${end}`).getTime();
-  let days;
-  let hours;
-  let mins;
-  let seconds;
+  let days = 0;
+  let hours = 0;
+  let mins = 0;
+  let seconds = 0;
 
   let countdown;
   onMount(() => {
@@ -61,6 +60,7 @@
   h3 {
     font-size: 2em;
     line-height: 1.5em;
+    text-align: center;
   }
   .countdown {
     cursor: pointer;
@@ -74,14 +74,14 @@
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    -webkit-box-reflect: below -16px -webkit-gradient(
+    /* -webkit-box-reflect: below -16px -webkit-gradient(
         linear,
         left top,
         left bottom,
         from(transparent),
         color-stop(66%, transparent),
         to(rgba(250, 250, 250, 0.2))
-      );
+      ); */
     text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
   }
 
@@ -112,7 +112,6 @@
       flex-direction: column;
       align-items: center;
       font-size: 20px;
-      -webkit-box-reflect: initial;
     }
 
     .countdown span {

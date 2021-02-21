@@ -3,14 +3,15 @@
 <script>
   import { onMount } from 'svelte';
   // Change the date/time for the countdown
-  export let end = 'February 1, 2025 5:00:00 GMT';
-  export let title;
+  export let end = 'March 1, 2021 5:00:00 GMT';
+  export let title = '';
 
   let later = new Date(`${end}`).getTime();
   let days = 0;
   let hours = 0;
   let mins = 0;
   let seconds = 0;
+  let isEnded = false;
 
   let countdown;
   onMount(() => {
@@ -29,8 +30,9 @@
       // If the end date/time has passed...
       if (difference < 0) {
         clearInterval(interval);
-        countdown.style.color = '#17a2b8';
-        countdown.innerHTML = `SALE has ended.`;
+        isEnded = true;
+        countdown.style.color = '#307ad5';
+        countdown.innerHTML = 'The Sale Has Ended.';
       }
     }, 1000);
   });
@@ -42,12 +44,14 @@
 </script>
 
 <main>
-  <h3>{title}</h3>
+  {#if !isEnded}
+    <h3>{title}</h3>
+  {/if}
   <section on:click={handleClick} bind:this={countdown} class="countdown">
-    <div>{days}<span>Days</span></div>
-    <div>{hours}<span>Hours</span></div>
-    <div>{mins}<span>Minutes</span></div>
-    <div>{seconds}<span>Seconds</span></div>
+    <div style="background-color: #10c45c;">{days}<span>Days</span></div>
+    <div style="background-color: #307ad5;">{hours}<span>Hours</span></div>
+    <div style="background-color: #fdc735;">{mins}<span>Minutes</span></div>
+    <div style="background-color: #d94da6;">{seconds}<span>Seconds</span></div>
   </section>
 </main>
 
@@ -58,14 +62,16 @@
     align-items: center;
   }
   h3 {
+    margin: 0 0 0.5em 0;
     font-size: 2em;
     line-height: 1.5em;
     text-align: center;
+    color: #444;
   }
   .countdown {
     cursor: pointer;
-    font-size: 25px;
-    color: #fff;
+    font-size: 24px;
+    color: white;
     font-weight: bold;
     display: flex;
     /* flex-wrap: wrap; */
@@ -74,32 +80,47 @@
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    /* -webkit-box-reflect: below -16px -webkit-gradient(
-        linear,
-        left top,
-        left bottom,
-        from(transparent),
-        color-stop(66%, transparent),
-        to(rgba(250, 250, 250, 0.2))
-      ); */
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
+    /* text-shadow: 0 0 4px rgba(0, 0, 0, 0.24); */
   }
 
   .countdown div {
-    padding: 1em;
-    min-width: 25%;
-    border-radius: 25px;
+    /* padding: 1em; */
+    /* min-width: 25%; */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
     margin: 10px;
-    background-color: #307ad5;
+    background-color: #fdc735;
     border-color: transparent;
+    box-shadow: 0 20px 30px rgba(0, 0, 0, 0.24);
+    background-image: linear-gradient(
+      to bottom right,
+      transparent,
+      rgba(0, 0, 0, 0.05)
+    );
+    /* text-shadow: none; */
+    animation: spin 1.2s ease-in-out;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+      box-shadow: none;
+    }
+    100% {
+      transform: rotate3d(1, 1, 1, 360deg);
+    }
   }
 
   .countdown span {
     display: block;
-    color: #fdc735;
-    font-size: 20px;
+    color: #333;
+    font-size: 18px;
     padding-top: 5px;
-    text-shadow: 0 0 4px rgba(0, 0, 0, 0.24);
+    text-shadow: 0 0 2px rgba(255, 255, 255, 0.24);
   }
 
   .countdown span:hover {
@@ -110,18 +131,6 @@
   @media (max-width: 480px) {
     .countdown {
       flex-direction: column;
-      align-items: center;
-      font-size: 20px;
-    }
-
-    .countdown span {
-      font-size: 10px;
-    }
-
-    .countdown div {
-      /* display: block; */
-      width: 100%;
-      padding: 10px;
     }
   }
 </style>

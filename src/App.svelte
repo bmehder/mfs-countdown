@@ -109,9 +109,11 @@
     0% {
       transform: rotate(0deg);
       box-shadow: none;
+      opacity: 0;
     }
     100% {
       transform: rotate3d(1, 1, 1, 360deg);
+      opacity: 1;
     }
   }
 

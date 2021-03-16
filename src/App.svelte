@@ -64,9 +64,12 @@
   h3 {
     margin: 0 0 0.5em 0;
     font-size: 2em;
+    font-weight: 300;
     line-height: 1.5em;
     text-align: center;
-    color: #444;
+    color: #333;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
   }
   .countdown {
     cursor: pointer;
@@ -119,7 +122,7 @@
 
   .countdown span {
     display: block;
-    color: #333;
+    color: #222;
     font-size: 18px;
     padding-top: 5px;
     text-shadow: 0 0 2px rgba(255, 255, 255, 0.24);

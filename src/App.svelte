@@ -47,18 +47,24 @@
   {#if !isEnded}
     <h3>{title}</h3>
   {/if}
-  <section on:click={handleClick} bind:this={countdown} class="countdown">
+  <section on:click={handleClick} bind:this={countdown}>
     <div style="background-color: #10c45c;">
-      {days}<span>{days === 1 ? 'Day' : 'Days'}</span>
+      {days}<span style="color: #10c45c;">{days === 1 ? 'Day' : 'Days'}</span>
     </div>
     <div style="background-color: #307ad5;">
-      {hours}<span>{hours === 1 ? 'Hour' : 'Hours'}</span>
+      {hours}<span style="color: #307ad5;"
+        >{hours === 1 ? 'Hour' : 'Hours'}</span
+      >
     </div>
     <div style="background-color: #fdc735;">
-      {mins}<span>{mins === 1 ? 'Minute' : 'Minutes'}</span>
+      {mins}<span style="color: #fdc735;"
+        >{mins === 1 ? 'Minute' : 'Minutes'}</span
+      >
     </div>
     <div style="background-color: #d94da6;">
-      {seconds}<span>{seconds === 1 ? 'Second' : 'Seconds'}</span>
+      {seconds}<span style="color: #d94da6;"
+        >{seconds === 1 ? 'Second' : 'Seconds'}</span
+      >
     </div>
   </section>
 </main>
@@ -79,24 +85,21 @@
     text-transform: uppercase;
     letter-spacing: 0.2em;
   }
-  .countdown {
+  section {
     cursor: pointer;
     font-size: 24px;
     color: white;
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.52);
     font-weight: bold;
     display: flex;
-    /* flex-wrap: wrap; */
     justify-content: center;
     align-items: center;
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    /* text-shadow: 0 0 4px rgba(0, 0, 0, 0.24); */
   }
 
-  .countdown div {
-    /* padding: 1em; */
-    /* min-width: 25%; */
+  div {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -113,7 +116,6 @@
       transparent,
       rgba(0, 0, 0, 0.05)
     );
-    /* text-shadow: none; */
     animation: spin 1.2s ease-in-out;
   }
   @keyframes spin {
@@ -127,22 +129,23 @@
       opacity: 1;
     }
   }
-
-  .countdown span {
+  span {
     display: block;
     color: #222;
     font-size: 18px;
     padding-top: 5px;
-    text-shadow: 0 0 2px rgba(255, 255, 255, 0.24);
+    text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5),
+      0px -4px 20px rgba(0, 0, 0, 0.5);
+    text-transform: uppercase;
   }
 
-  .countdown span:hover {
+  span:hover {
     transform: scale(1.1);
     transition: transform 0.5s ease-in-out;
   }
 
   @media (max-width: 480px) {
-    .countdown {
+    section {
       flex-direction: column;
     }
   }

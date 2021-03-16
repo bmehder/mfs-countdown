@@ -55,7 +55,7 @@
       {hours}<span>{hours === 1 ? 'Hour' : 'Hours'}</span>
     </div>
     <div style="background-color: #fdc735;">
-      {mins}<span>{mins === 1 ? 'Minute' : 'Minute'}</span>
+      {mins}<span>{mins === 1 ? 'Minute' : 'Minutes'}</span>
     </div>
     <div style="background-color: #d94da6;">
       {seconds}<span>{seconds === 1 ? 'Second' : 'Seconds'}</span>

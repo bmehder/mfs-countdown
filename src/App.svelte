@@ -3,7 +3,7 @@
 <script>
   import { onMount } from 'svelte';
   // Change the date/time for the countdown
-  export let end = 'March 1, 2021 5:00:00 GMT';
+  export let end = 'April 1, 2021 5:00:00 GMT';
   export let title = '';
 
   let later = new Date(`${end}`).getTime();
@@ -48,10 +48,18 @@
     <h3>{title}</h3>
   {/if}
   <section on:click={handleClick} bind:this={countdown} class="countdown">
-    <div style="background-color: #10c45c;">{days}<span>Days</span></div>
-    <div style="background-color: #307ad5;">{hours}<span>Hours</span></div>
-    <div style="background-color: #fdc735;">{mins}<span>Minutes</span></div>
-    <div style="background-color: #d94da6;">{seconds}<span>Seconds</span></div>
+    <div style="background-color: #10c45c;">
+      {days}<span>{days === 1 ? 'Day' : 'Days'}</span>
+    </div>
+    <div style="background-color: #307ad5;">
+      {hours}<span>{hours === 1 ? 'Hour' : 'Hours'}</span>
+    </div>
+    <div style="background-color: #fdc735;">
+      {mins}<span>{mins === 1 ? 'Minute' : 'Minute'}</span>
+    </div>
+    <div style="background-color: #d94da6;">
+      {seconds}<span>{seconds === 1 ? 'Second' : 'Seconds'}</span>
+    </div>
   </section>
 </main>
 

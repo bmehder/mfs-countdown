@@ -49,22 +49,16 @@
   {/if}
   <section on:click={handleClick} bind:this={countdown}>
     <div style="background-color: #10c45c;">
-      {days}<span style="color: #10c45c;">{days === 1 ? 'Day' : 'Days'}</span>
+      {days}<span>{days === 1 ? 'Day' : 'Days'}</span>
     </div>
     <div style="background-color: #307ad5;">
-      {hours}<span style="color: #307ad5;"
-        >{hours === 1 ? 'Hour' : 'Hours'}</span
-      >
+      {hours}<span>{hours === 1 ? 'Hour' : 'Hours'}</span>
     </div>
     <div style="background-color: #fdc735;">
-      {mins}<span style="color: #fdc735;"
-        >{mins === 1 ? 'Minute' : 'Minutes'}</span
-      >
+      {mins}<span>{mins === 1 ? 'Minute' : 'Minutes'}</span>
     </div>
     <div style="background-color: #d94da6;">
-      {seconds}<span style="color: #d94da6;"
-        >{seconds === 1 ? 'Second' : 'Seconds'}</span
-      >
+      {seconds}<span>{seconds === 1 ? 'Second' : 'Seconds'}</span>
     </div>
   </section>
 </main>
@@ -88,8 +82,8 @@
   section {
     cursor: pointer;
     font-size: 24px;
-    color: white;
-    text-shadow: 0 0 2px rgba(0, 0, 0, 0.52);
+    color: #f0ffff;
+    text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.24);
     font-weight: bold;
     display: flex;
     justify-content: center;
@@ -131,12 +125,10 @@
   }
   span {
     display: block;
-    color: #222;
-    font-size: 18px;
+    font-size: 16px;
     padding-top: 5px;
-    text-shadow: 0px 4px 5px rgba(0, 0, 0, 0.5),
-      0px -4px 20px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
+    letter-spacing: 0.1em;
   }
 
   span:hover {
